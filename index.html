@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMax | Venta de Autos</title>
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(120deg, #111, #444);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        header button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            background: #e63946;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        header button:hover {
+            background: #c5303b;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* AUTOS */
+        .autos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .auto-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .auto-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .auto-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .auto-card div {
+            padding: 15px;
+        }
+
+        /* FORM */
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        form input, form button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        form button {
+            background: #1d3557;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background: #16324f;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <header>
+        <h1>AutoMax</h1>
+        <p>Los mejores autos nuevos y usados al mejor precio</p>
+        <button onclick="scrollToForm()">Solicitar información</button>
+    </header>
+
+    <!-- AUTOS -->
+    <section>
+        <h2>Nuestros Modelos</h2>
+        <div class="autos">
+            <div class="auto-card">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70" alt="Auto deportivo">
+                <div>
+                    <h3>Deportivo 2024</h3>
+                    <p>Desde $35,000 USD</p>
+                </div>
+            </div>
+
+            <div class="auto-card">
+                <img src="https://images.unsplash.com/photo-1549924231-f129b911e442" alt="SUV">
+                <div>
+                    <h3>SUV Familiar</h3>
+                    <p>Desde $28,000 USD</p>
+                </div>
+            </div>
+
+            <div class="auto-card">
+                <img src="https://images.unsplash.com/photo-1493238792000-8113da705763" alt="Sedan">
+                <div>
+                    <h3>Sedán Elegante</h3>
+                    <p>Desde $22,000 USD</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO -->
+    <section id="contacto">
+        <h2>Contáctanos</h2>
+        <form onsubmit="enviarFormulario(event)">
+            <input type="text" id="nombre" placeholder="Tu nombre">
+            <input type="email" id="email" placeholder="Tu correo">
+            <input type="tel" id="telefono" placeholder="Tu teléfono">
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 AutoMax. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function scrollToForm() {
+            document.getElementById("contacto").scrollIntoView({ behavior: "smooth" });
+        }
+
+        function enviarFormulario(event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById("nombre").value;
+            const email = document.getElementById("email").value;
+            const telefono = document.getElementById("telefono").value;
+
+            if (!nombre || !email || !telefono) {
+                alert("Por favor completa todos los campos.");
+                return;
+            }
+
+            alert("Gracias " + nombre + ", pronto nos pondremos en contacto contigo 🚗");
+            event.target.reset();
+        }
+    </script>
+
+</body>
+</html>
